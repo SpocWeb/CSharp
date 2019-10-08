@@ -54,6 +54,11 @@ Briefer Code does not necessarily mean shorter Code. The Number of Characters is
 
 This results in very readable Code where medium-sized Variable and Method Names are separated by Operators and/or Spaces. That makes it easy for the Reader to parse it (mentally) and understand it. 
 When e.g. Operators cannot be easily distinguished from Letters, they should be surrounded by additional Spaces, even if the Compiler does not need it.  
+* Brief Methods: 
+Methods should fit on a single Screen. You should not need to scroll or use a tiny Font to see it at a single glance. The best Methods are single Expressions, because they are usually also `[Pure]`
+* `[Pure]` Functions have no 'Side-Effects' (except e.g. temporary Memory Allocation and CPU Consumption). 
+  * These Functions are stateless and can be carelessly shared and easily tested 
+  
 
 ### Redundancy is bad
 * SPoC (Single Point of Change)
