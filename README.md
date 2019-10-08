@@ -4,6 +4,27 @@ This Repo is intended to publish small to medium-sized C# Samples and Gists
 These Samples typically demonstrate a particular Coding- and Architecture Style that has evolved and is still changing according to the availability of new Languages and Idioms. One Example is the Java practice of writing Methods in small and Classes in capital Letters. 
 This aligns with the german Habit of capitalizing Nouns, which takes slightly more time to type, but as we know by now (although very late), Code and Text are much more often read than written. 
 
+## Knowledge Capture
+Programs is Knowledge captured in a Form that is applicable by Machines. By breaking it up into small, well-defined Instructions it becomes not only executable, but simultaneously (hopefully) better comprehensible for Humans. It is the purest Form of Knowledge: automated, but we aspire it to be also readable in the best possible way. Therefore the following Requirements are made: 
+
+### Good Naming 
+The Names of Classes and Methods should succinctly describe their Purpose using well-known Analogons. Method Names should be Verbs, otherwise they may rather describe querying Properties. in will take the Form VerbObject(object arg) so the full Invocation yields Subject.VerbObject(arg)
+
+### API Documentation
+Unless a Method is completely trivial and self-describing, at least a <summary>Documentation</summary> should be given, at least for public Methods. The Summary should fit on a single Line (up to 130 Characters). Everything else should be written into a separate 
+<remarks>Section</remarks>. 
+
+Parameter Documentation is often more tedious than helpful, especially if completeness is required by the Environment as soon as the first Parameter is described. Rather use the <paramref name='...'> in the Summary or Remarks to document their Role and possible considerations. 
+  
+### Tests as Documentation
+Unit Tests provide for a very concrete Documentation by showing the expected Result for a given Set of Parameters. Therefore Tests should be written close to the Implementation. Rather use conditional Compilation if the Test Cases must not be delivered with the compiled DLL. 
+
+### Conceptual Documentation
+API Documentation is sufficient only for well-known Domains. For new Users or very detailed Designs a conceptual Documentation is needed. Its Purposes are, among others: 
+* Description above Class-Level 
+* Introduction into Domain 
+* Reasoning about Design-Decisions 
+
 ## Architecture Style:
 Architecture Guidelines provide a perspective for deciding over alternative Approaches and focusing Resources. 
 * Functional Code provides best Composability. 
@@ -39,7 +60,7 @@ When e.g. Operators cannot be easily distinguished from Letters, they should be 
 Removing Redundancy increases Brevity (see above) and reduces the risk of inconsistencies. One goal in this Repository is to avoid implementing the same Algorithm twice. This often requires restructuring and may introduce Regression Bugs, because existing Algoritms need to be extended by new Features or hardened for new Situations. We still go to great lengths in doing this, because the resulting Algorithms will be very robust and reusable. 
 
 ### Align Code Formatting and Structure
-The Reader has to (mentally) parse the Code. This starts at the highest (Folder)-Level and  goes down to Files, Methods and Lines. 
+The Reader has to (mentally) parse the Code to understand it. This starts at the highest (Folder)-Level and  goes down to Files, Methods and Lines. 
 Instructions that need to be executed together are formed into Blocks. This is done in one of the following Ways, depending on the Programming Language: 
 * Fortran, Basic etc use `BEGIN type` and `END type` Statements to delimit a Block  
 * C-like Languages use { Braces } to indicate the Block which is briefer
