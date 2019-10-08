@@ -2,7 +2,7 @@
 This Repo is intended to publish small to medium-sized C# Samples and Gists
 
 These Samples typically demonstrate a particular Coding- and Architecture Style that has evolved and is still changing according to the availability of new Languages and Idioms. One Example is the Java practice of writing Methods in small and Classes in capital Letters. 
-This aligns with the german Habit of capitalizing Nouns, which takes slightly more time to type, but as we know by now (although very late), Code and Text are much more often read than written. 
+This aligns with the german Habit of capitalizing Nouns, which takes slightly more time to type, but as we know by now (although very late), Code and Text are much more often read than written. Unfortunately the universally endorsed Microsoft C# Conventions force writing Methods with Capital Letters.
 
 ## Knowledge Capture
 Programs is Knowledge captured in a Form that is applicable by Machines. By breaking it up into small, well-defined Instructions it becomes not only executable, but simultaneously (hopefully) better comprehensible for Humans. It is the purest Form of Knowledge: automated, but we aspire it to be also readable in the best possible way. Therefore the following Requirements are made: 
@@ -92,3 +92,14 @@ The following list describes a few Idioms common in this code and the Reasons be
 * `switch` instead of `if ... else ...`:
   * especially as of C#8 a new switch Syntax is available without fall-through or break; - Noise. 
   * Combined with `=>` Expression Syntax it becomes extremely legible.
+* Using plain Names also for protected and private Fields and Methods: 
+  * Visibility is often volatile and it creates only Code Churn to update all Usages
+  * Using _ Prefix for Backing Fields and Methods: These are often not needed, but when they are, it is a good Convention to name them just like the actual Properties and Methods only with a leading _ Underscore. 
+* Using PASCAL_CASE for static and const Members in non-static Classes: 
+  * Since this Decision is usually not volatile, it pays of to advertise static Members in non-static Classes by this Convention, so they can be easily identified. 
+* Use Extension Methods as much as possible: 
+* Mixin: Use minimal Base-Interfaces and derived Interfaces with Default Implementations: 
+  * This C# 8 Feature allows to re-use Default Implementations across Inheritance Hierarchies. 
+  * It is more flexible than abstract Base Classes 
+  * Unlike Extension Methods these Implementations can be overridden by more specific ones.
+  
