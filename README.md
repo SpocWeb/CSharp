@@ -13,7 +13,7 @@ The Names of Classes and Methods should succinctly describe their Purpose using 
 ### API Documentation
 Unless a Method is completely trivial and self-describing, at least a &lt;summary>Documentation&lt;/summary> should be given; this is mandatory for public Methods. The Summary should fit on a single Line (up to 130 Characters). Everything else should be written into a separate &lt;remarks>Section&lt;/remarks>. 
 
-Parameter Documentation is often more tedious than helpful, especially if completeness is required by the Environment as soon as the first Parameter is described. Rather use the <paramref name='...'> in the Summary or Remarks to document their Role and possible considerations. 
+Parameter Documentation is often more tedious than helpful, especially if completeness is required by the Environment as soon as the first Parameter is described. Rather use the &lt;paramref name='...'> in the Summary or Remarks to document their Role and possible considerations. 
   
 ### Tests as Documentation
 Unit Tests provide for a very concrete Documentation by showing the expected Result for a given Set of Parameters. Therefore Tests should be written close to the Implementation. Rather use conditional Compilation if the Test Cases must not be delivered with the compiled DLL. 
@@ -66,3 +66,28 @@ Instructions that need to be executed together are formed into Blocks. This is d
 * F#, Python and modern Scheme use Indentation which enforces proper Formatting. 
 It is common to indent Lines into Blocks, according to Coding Structure in nearly any Programming Language anyway. 
 Part of Pythons appeal is its clean Layout, making Syntactical Noise like {;} obsolete. 
+
+### Specific Idioms used
+The following list describes a few Idioms common in this code and the Reasons behind them. Sometimes it is just remainders of best Practices in C or Java Programming. 
+* --i instead of i--: Although the Compiler should optimize this to yield the same, C-Compilers may create a temporary Copy of an Object 
+* for(;;) instead of while(true) Loops: In addition to being briefer, it also saves you to look if there is a Variable used like in while(blue). 
+* for(int i = Count; --i >= 0;): Whenever the Order is irrelevant, we use backward Loops, because: 
+  * the Check for 0 is faster (although you realize it only in tight loops with few Instructions)
+  * When removing or adding to a List, this saves you from worrying about the Index. 
+* Enums: Although Enums are righteously frowned upon by OO purists, their Support in Visual Studio and ReSharper is excellent. They save creating a Class Hierarchy but should be used only if they are stable 
+* Use Properties when applicable. Properties have many Benefits: 
+  * they are displayed in the Debugger (although that may lead to unwanted Side-Effects) 
+  * they save the Declaration of get-/set-Method-Pairs 
+  * But they must only be used when their (repeated) Evaluation is fast, otherwise write a Get()-Method. This is actually a good Side-Channel Communication to the API-User. 
+* Use Events when applicable. Like Properties, they have many Benefits: 
+  * -= and += Operators for (Un-)Subscription 
+  * they should NOT propagate, but catch and Log their Exception (unlike Callbacks!)
+  * Unlike Callbacks they should have an anonymous Relation with their Clients 
+  * Events should ideally be processed async in a separate Thread.
+* Purposeful&lt;T> Typing: It is helpful to use e.g. Int&lt;T> and String&lt;T> instead of simple int and string to avoid Confusion. 
+  * giving the right Methods for IntelliSense 
+  * avoiding accidental wrong use of Parameters (happens often with int IDs)
+* => Expression Syntax: This saves the { return ... } Noise, especially on Properties. 
+* switch instead of if ... else ...
+  * especially as of C#8 a new switch Syntax is available without fall-through or break; Noise. 
+  * Combined with => Expression Syntax it becomes extremely legible.
