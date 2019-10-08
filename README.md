@@ -11,8 +11,7 @@ Programs is Knowledge captured in a Form that is applicable by Machines. By brea
 The Names of Classes and Methods should succinctly describe their Purpose using well-known Analogons. Method Names should be Verbs, otherwise they may rather describe querying Properties. in will take the Form VerbObject(object arg) so the full Invocation yields Subject.VerbObject(arg)
 
 ### API Documentation
-Unless a Method is completely trivial and self-describing, at least a <summary>Documentation</summary> should be given, at least for public Methods. The Summary should fit on a single Line (up to 130 Characters). Everything else should be written into a separate 
-<remarks>Section</remarks>. 
+Unless a Method is completely trivial and self-describing, at least a &lt;summary>Documentation&lt;/summary> should be given; this is mandatory for public Methods. The Summary should fit on a single Line (up to 130 Characters). Everything else should be written into a separate &lt;remarks>Section&lt;/remarks>. 
 
 Parameter Documentation is often more tedious than helpful, especially if completeness is required by the Environment as soon as the first Parameter is described. Rather use the <paramref name='...'> in the Summary or Remarks to document their Role and possible considerations. 
   
