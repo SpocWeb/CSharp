@@ -72,6 +72,9 @@ Instructions that need to be executed together are formed into Blocks. This is d
 * F#, Python and modern Scheme use Indentation which enforces proper Formatting. 
 It is common to indent Lines into Blocks, according to Coding Structure in nearly any Programming Language anyway. 
 Part of Pythons appeal is its clean Layout, making Syntactical Noise like `{ ; }` obsolete. 
+* Long Lines can appear due to long Identifier Names and/or complex Expressions. The latter should be avoided not only for Readability but also for Debuggability, since Expressions are evaluated atomically. Rather introduce well-named local Variables, unless in performance-critical Expressions. 
+* Modern Editors can automatically wrap long Lines and if they are good, they also indent the wrapped Content. 
+* Alternatively long Lines can be broken manually somewhere between 80 and 130 Characters, so the Appearance stays the same. Breaks should be placed BEFORE Operators according to [best Practices of Programmers and Mathematicians](https://legacy.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-binary-operator). 
 
 ### Specific Idioms used
 The following list describes a few Idioms common in this code and the Reasons behind them. Sometimes it is just remainders of best Practices in C or Java Programming. 
